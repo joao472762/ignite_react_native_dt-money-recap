@@ -1,5 +1,9 @@
+import { Header } from "../../components/Header";
+
 export function Home(){
     return(
-        <div>i'm achieve in Home component</div>
+        <div>
+            <Header/>
+        </div>
     )
 }
