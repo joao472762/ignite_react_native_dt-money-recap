@@ -24,7 +24,7 @@ export function  Sumary(){
                 <strong>R$ 17.400,00</strong>
             </Card>
             
-            <Card>
+            <Card isTotalCard>
                 <header>
                         <h2>Total</h2>
                         <CurrencyDollar color={colors.white}/>

@@ -8,12 +8,21 @@ export const SumaryContainer = styled.section`
     margin-top: -5rem;
     overflow: auto;
 `
+interface CardProps {
+    isTotalCard?: boolean
+}
 
-export const Card = styled.div`
+export const Card = styled.div<CardProps>`
     border-radius: 6px;
     height: 8.56rem;
     padding:  1.5rem 1.5rem 1.5rem 2rem;
-    background-color: ${( {theme} ) => theme.colors["gray-600"]};
+    background-color: ${ ( props ) => 
+        (
+            props.isTotalCard 
+            ? ( props.theme.colors["green-700"] )
+            : ( props.theme.colors["gray-600"] )
+        )
+    };
 
     header{
         display:  flex;
