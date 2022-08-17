@@ -1,19 +1,13 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
+
 import { Header } from "../../components/Header";
 import { SearchForm } from "../../components/SearchForm";
 import { Sumary } from "../../components/Sumary/index.";
-import { TransactionContext } from "../../context/TransactionsContext";
-import { Api } from "../../lib/axios";
 import { HomeContent, TransactionContainer } from "./styles";
+import { TransactionContext } from "../../context/TransactionsContext";
+import { dateFomatter, priceFormatter } from "../../services/formatter";
 
-interface Transactions   {
-    id: number,
-    price: number,
-    createdAt : string
-    description: string,
-    type: 'income' | 'outcome',
-}
+
 
 export function Home(){
     const {transactions} = useContext(TransactionContext)
@@ -31,10 +25,10 @@ export function Home(){
                             {
                                 transactions.map(transactions => (
                                     <tr key={transactions.id}>
-                                        <td>Desenvolvimento de site</td>
-                                        <td>R$ 12.000,00</td>
-                                        <td>Venda</td>
-                                        <td>10/04/2022</td>
+                                        <td>{transactions.description}</td>
+                                        <td>{priceFormatter.format(transactions.price)}</td>
+                                        <td>{transactions.category}</td>
+                                        <td>{dateFomatter.format(new Date(transactions.createdAt))}</td>
                                     </tr>
                                 ))
                             }
