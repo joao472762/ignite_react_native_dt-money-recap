@@ -1,7 +1,7 @@
 import { X } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleUp, ArrowCircleDown } from 'phosphor-react'
-
+    
 import {  
     Close,
     Title, 

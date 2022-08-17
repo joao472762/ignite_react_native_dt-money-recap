@@ -1,0 +1,26 @@
+{
+    "transactions": [
+        {
+            "id": 0,
+            "description": "desenvolver site",
+            "type": "income",
+            "price": 2000,
+            "createdAt" : "Wed Aug 17 2022"
+        },
+        {
+            "id": 1,
+            "description": "lanche",
+            "type": "outcome",
+            "price": 2000,
+            "createdAt" : "Wed Aug 17 2022"
+        },
+        
+        {
+            "id": 3,
+            "description": "banho do dog",
+            "type": "outcome",
+            "price": 120,
+            "createdAt" : "Wed Aug 17 2022"
+        }
+    ]
+}
