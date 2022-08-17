@@ -1,10 +1,14 @@
 import { ArrowCircleUp, ArrowCircleDown, CurrencyDollar } from 'phosphor-react'
 
+import { useSumary } from '../../hooks/sumary';
 import { Card, SumaryContainer } from "./styles";
 import { defaultTheme } from "../../global/styles/theme";
+import { priceFormatter } from '../../services/formatter';
 
 export function  Sumary(){
+    const sumary = useSumary()
     const {colors} =  defaultTheme
+
     return (
 
         <SumaryContainer>
@@ -13,7 +17,7 @@ export function  Sumary(){
                         <h2>Entradas</h2>
                         <ArrowCircleUp color={colors["green-300"]}/>
                 </header>
-                <strong>R$ 17.400,00</strong>
+                <strong>{priceFormatter.format(sumary.income)}</strong>
             </Card>
 
             <Card>
@@ -21,7 +25,7 @@ export function  Sumary(){
                         <h2>Saídas</h2>
                         <ArrowCircleDown color={colors["red-300"]}/>
                 </header>
-                <strong>R$ 17.400,00</strong>
+                <strong>{priceFormatter.format(sumary.outcome)}</strong>
             </Card>
             
             <Card isTotalCard>
@@ -29,7 +33,7 @@ export function  Sumary(){
                         <h2>Total</h2>
                         <CurrencyDollar color={colors.white}/>
                 </header>
-                <strong>R$ 17.400,00</strong>
+                <strong>{priceFormatter.format(sumary.total)}</strong>
             </Card>
 
         </SumaryContainer>

@@ -2,7 +2,6 @@ import { createContext, ReactNode, useEffect, useState } from "react"
 
 import { Api } from "../../lib/axios"
 
-
 interface Transactions   {
     id: number,
     price: number,
@@ -36,8 +35,9 @@ export function TransactionsProvider({children}: TransactionsProviderProps){
 
     return(
         <TransactionContext.Provider value={{
-            transactions
-        }}>
+                transactions
+            }}
+        >
             {children}
         </TransactionContext.Provider>
     )
