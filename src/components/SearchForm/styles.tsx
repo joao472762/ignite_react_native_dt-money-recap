@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchFormContainer = styled.section`
+export const SearchFormContainer = styled.form`
     display: flex;
     align-items: center;
     column-gap: 1rem;
@@ -42,8 +42,10 @@ export const SearchButton = styled.button`
     span{
         font-weight: bold;
     }
-
-    &:hover{
+    &:disabled{
+        opacity: .7;
+    }
+    &:not(:disabled):hover{
         background-color: ${( {theme} ) => theme.colors["green-300"]};
         color: ${( {theme} ) => theme.colors.white};
     }

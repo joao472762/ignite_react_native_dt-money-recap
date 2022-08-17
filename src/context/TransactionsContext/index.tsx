@@ -16,17 +16,33 @@ interface TransactionsProviderProps {
 }
 
 interface TransactionContextType  {
-    transactions: Transactions[]
+    transactions: Transactions[],
+    featchTransactions: (query: string) => Promise<void>
 }
+
 
 export const TransactionContext = createContext({} as TransactionContextType)
 
 export function TransactionsProvider({children}: TransactionsProviderProps){
     const [transactions, seTransactions] = useState<Transactions[]>([])
 
-    async function featchTransactions(){
-        const response = await Api.get('transactions')
-        seTransactions(() => response.data)
+    async function featchTransactions( query?: string){
+
+        if(query){
+            const response = await Api.get('transactions',{
+                params:{
+                    q: query
+                }
+            })
+
+            seTransactions(() => response.data)
+            
+        }
+        else{
+
+            const response = await Api.get('transactions')
+            seTransactions(() => response.data)
+        }
     }
 
     useEffect(() => {
@@ -35,7 +51,8 @@ export function TransactionsProvider({children}: TransactionsProviderProps){
 
     return(
         <TransactionContext.Provider value={{
-                transactions
+                transactions,
+                featchTransactions,
             }}
         >
             {children}
